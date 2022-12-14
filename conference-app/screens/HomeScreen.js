@@ -2,7 +2,8 @@ import React from "react";
 import { Text, View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import Icon from "../assets/react.png"
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
+    console.log(props);
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={Icon} />
@@ -11,7 +12,12 @@ const HomeScreen = () => {
                 The best React Native conference, powered by Shopify
             </Text>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+                style={styles.button}
+                onPress={() => {
+                    props.navigation.navigate("Schedule");
+                }}
+            >
                 <Text style={styles.buttonText}>See schedule</Text>
             </TouchableOpacity>
         </View>

@@ -1,16 +1,6 @@
 import React from "react";
-import { View, Text, SectionList, StyleSheet } from "react-native";
+import { View, Text, SectionList, StyleSheet, TouchableOpacity } from "react-native";
 import { mockData } from "../mockData";
-
-const singleItem = data => {
-    const item = data.item;
-
-    return (
-        <View style={styles.singleItem}>
-            <Text>{item.title}</Text>
-        </View>
-    );
-};
 
 const keyExtractor = item => item.id;
 
@@ -36,7 +26,19 @@ const listHeader = () => {
     );
 }
 
-const ScheduleScreen = () => {
+const ScheduleScreen = (props) => {
+    const singleItem = data => {
+        const item = data.item;
+    
+        return (
+            <TouchableOpacity onPress={() => props.navigation.navigate("Details")}>
+                <View style={styles.singleItem}>
+                    <Text>{item.title}</Text>
+                </View>
+            </TouchableOpacity>
+        );
+    };
+
     return (
         <View style={styles.container}>
             <SectionList 
@@ -68,8 +70,7 @@ const styles = StyleSheet.create({
     },
     listHeader: {
         backgroundColor: "#ccc",
-        paddingTop: 65,
-        paddingBottom: 32,
+        paddingVertical: 32,
         paddingHorizontal: 20,
         justifyContent: "center",
         alignItems: "center",
