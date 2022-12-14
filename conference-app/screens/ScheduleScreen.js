@@ -31,7 +31,7 @@ const ScheduleScreen = (props) => {
         const item = data.item;
     
         return (
-            <TouchableOpacity onPress={() => props.navigation.navigate("Details")}>
+            <TouchableOpacity onPress={() => props.navigation.navigate("Details", { talkData: item })}>
                 <View style={styles.singleItem}>
                     <Text>{item.title}</Text>
                 </View>

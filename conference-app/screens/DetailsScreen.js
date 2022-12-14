@@ -1,30 +1,28 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ route }) => {
+    const talkData = route.params.talkData;
+
     return (
         <View style={styles.container}>
             <View style={styles.talkDetails}>
-                <Text style={styles.title}>Talk title</Text>
-                <Text style={styles.time}>Date & time</Text>
-                <Text style={styles.description}>
-                    Talk description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in vehicula tortor. Sed 
-                    mattis, quam eu dictum tempus, magna nisl fermentum mi, sit amet luctus felis augue sit amet massa. 
-                    Aliquam eu mauris rhoncus lorem porta ultrices. Class aptent taciti sociosqu ad litora torquent per 
-                    conubia nostra, per inceptos himenaeos. Sed hendrerit porttitor massa ac aliquam. Duis porta interdum 
-                    aliquet. Quisque eu volutpat lorem, ac hendrerit eros
-                </Text>
+                <Text style={styles.title}>{talkData.title}</Text>
+                <Text style={styles.time}>{talkData.time}</Text>
+                <Text style={styles.description}>{talkData.description}</Text>
             </View>
-            <View style={styles.speaker}>
-                <Image 
-                    style={styles.avatar}
-                    source={{ uri: "https://picsum.photos/id/365/80/80.jpg" }}
-                />
-                <View>
-                    <Text style={styles.speakerName}>Speaker name</Text>
-                    <Text style={styles.speakerRole}>Job title</Text>
+            {talkData.speaker && (
+                <View style={styles.speaker}>
+                    <Image 
+                        style={styles.avatar}
+                        source={{ uri: talkData.speaker.avatar }}
+                    />
+                    <View>
+                        <Text style={styles.speakerName}>{talkData.speaker.name}</Text>
+                        <Text style={styles.speakerRole}>{talkData.speaker.role}</Text>
+                    </View>
                 </View>
-            </View>
+            )}
         </View>
     );
 };
