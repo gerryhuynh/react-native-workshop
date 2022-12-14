@@ -12,8 +12,22 @@ export default function App() {
   return (
     <NavigationContainer initialRouteName='Home'>
       <Stack.Navigator>
-        <Stack.Screen name='Home' component={HomeScreen}/>
-        <Stack.Screen name="Schedule" component={ScheduleScreen} />
+        <Stack.Screen 
+          name='Home' 
+          component={HomeScreen}
+          options={{
+            title: "Derppp",
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen 
+          name="Schedule" 
+          component={ScheduleScreen} 
+          options={{
+            headerLeft: () => null,
+            gestureEnabled: false,
+          }}
+        />
         <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
